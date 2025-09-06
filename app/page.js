@@ -1,7 +1,9 @@
 import ProductBrowser from "./components/ProductBrowser";
 async function getInitialItems() {
   try {
-    const res = await fetch("/api/items", { cache: "no-store" });
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/items`, {
+      cache: "no-store", 
+    });
     if (!res.ok) return [];
     return res.json();
   } catch (error) {
