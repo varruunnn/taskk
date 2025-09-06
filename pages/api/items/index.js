@@ -7,7 +7,7 @@ export default async function handler(req, res) {
   if (req.method === "GET") {
     const { category, minPrice, maxPrice } = req.query;
     let filter = {};
-    if (category) filter.category = category;
+    if (category) filter.category = new RegExp(category, 'i');
     if (minPrice || maxPrice) {
       filter.price = {};
       if (minPrice) filter.price.$gte = parseInt(minPrice);
